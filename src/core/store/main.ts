@@ -1,6 +1,5 @@
 import { action, observable, makeObservable } from "mobx"
 import NodeModel from '../../core/NodeModel'
-import _ from 'lodash'
 import clientFactory from '../clients/ClientFactory';
 
 export class Store {

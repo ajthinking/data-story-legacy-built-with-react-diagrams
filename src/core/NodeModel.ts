@@ -1,8 +1,8 @@
 import { NodeModel as DefaultNodeModel, NodeModelGenerics } from '@projectstorm/react-diagrams';
 import { BasePositionModelOptions } from '@projectstorm/react-canvas-core';
 import PortModel from './PortModel'
-import _ from 'lodash'
 import UID from './utils/UID'
+import { pickBy } from './utils/Obj'
 import NodeParameter from './NodeParameter';
 import { SerializedNodeModel } from './types/SerializedNodeModel';
 
@@ -85,13 +85,13 @@ export default class NodeModel extends DefaultNodeModel {
     }
 
     getInPorts() {
-        return _.pickBy(this.getPorts(), function(port, key) {
+        return pickBy(this.getPorts(), function(port) {
             return port.options.in
         });
     }
 
     getOutPorts() {
-        return _.pickBy(this.getPorts(), function(port, key) {
+        return pickBy(this.getPorts(), function(port, key) {
             return !port.options.in
         });        
     }

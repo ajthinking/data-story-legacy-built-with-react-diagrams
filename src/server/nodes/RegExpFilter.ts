@@ -1,6 +1,6 @@
 import ServerNode from "../ServerNode";
 // @ts-ignore
-import _ from 'lodash'
+import { trim } from "../../core/utils/Str"
 import NodeParameter from "../../core/NodeParameter";
 
 export default class RegExpFilter extends ServerNode {
@@ -53,7 +53,7 @@ export default class RegExpFilter extends ServerNode {
     }
 
     protected getExpression() {
-        let cleaned = _.trim(this.getParameterValue('expression'), '/')
+        let cleaned = trim(this.getParameterValue('expression'), '/')
         return RegExp(cleaned)
     }
 }
